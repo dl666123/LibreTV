@@ -442,5 +442,16 @@
 
     <!-- 添加弹窗和URL搜索参数处理脚本 -->
     <script src="js/index-page.js"></script>
+     <script>
+  // 这是一个自动把页面上所有豆瓣图片替换为中转代理的小脚本
+  const observer = new MutationObserver((mutations) => {
+    document.querySelectorAll('img').forEach(img => {
+      if (img.src.includes('doubanio.com') && !img.src.includes('images.weserv.nl')) {
+        img.src = 'https://images.weserv.nl/?url=' + img.src.replace('https://', '').replace('http://', '');
+      }
+    });
+  });
+  observer.observe(document.body, { childList: true, subtree: true });
+</script>
 </body>
 </html>
