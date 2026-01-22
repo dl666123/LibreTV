@@ -1,2 +1,1 @@
-# 在 GitHub 仓库根目录创建一个空的 package.json
 echo '{}' > package.json
